@@ -13,7 +13,11 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 )
 
-func getSpotPrice(ctx context.Context, client *ec2.Client, instanceType types.InstanceType, az string) (float64, error) {
+type EC2DescribePriceAPI interface {
+	DescribeSpotPriceHistory(ctx context.Context, params *ec2.DescribeSpotPriceHistoryInput, optFns ...func(*ec2.Options)) (*ec2.DescribeSpotPriceHistoryOutput, error)
+}
+
+func getSpotPrice(ctx context.Context, client EC2DescribePriceAPI, instanceType types.InstanceType, az string) (float64, error) {
 	result, err := client.DescribeSpotPriceHistory(ctx, &ec2.DescribeSpotPriceHistoryInput{
 		InstanceTypes:       []types.InstanceType{instanceType},
 		AvailabilityZone:    aws.String(az),
