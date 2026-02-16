@@ -85,10 +85,17 @@ func main() {
 	fmt.Printf("Total Session Cost: $%.2f\n", totalSessionCost)
 	fmt.Print("Terminate all nodes? (y/n): ")
 	var confirm string
-	fmt.Scanln(&confirm)
+	_, err = fmt.Scanln(&confirm)
+	if err != nil {
+		fmt.Printf("Confirm error: %v", err)
+	}
 
 	if confirm == "y" {
-		client.TerminateInstances(ctx, &ec2.TerminateInstancesInput{InstanceIds: ids})
+		_, err = client.TerminateInstances(ctx, &ec2.TerminateInstancesInput{InstanceIds: ids})
+		if err != nil {
+			fmt.Printf("Failed to send termination signals: %v", err)
+		}
+
 		fmt.Println("Termination signals sent.")
 	}
 }
