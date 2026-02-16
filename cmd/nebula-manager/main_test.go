@@ -14,7 +14,7 @@ type mockPriceClient struct{}
 
 func (m mockPriceClient) DescribeSpotPriceHistory(ctx context.Context, params *ec2.DescribeSpotPriceHistoryInput, optFns ...func(*ec2.Options)) (*ec2.DescribeSpotPriceHistoryOutput, error) {
 	return &ec2.DescribeSpotPriceHistoryOutput{
-		SpotPriceHistory: []types.SpotPriceHistory{
+		SpotPriceHistory: []types.SpotPrice{
 			{SpotPrice: aws.String("0.0500")},
 		},
 	}, nil
