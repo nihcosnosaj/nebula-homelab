@@ -17,3 +17,18 @@ vendor/
 *.pub
 
 .DS_Store
+
+# Ansible
+*.retry
+ansible.log
+.ansible/
+
+# Kubernetes
+*.kubeconfig
+*.conf
+.kube/
+
+/nebula
+
+.vscode/
+.idea/
