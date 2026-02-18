@@ -2,6 +2,10 @@
 
 Nebula is my attempt at a budget-friendly AWS homelab setup. 
 
+This is a "workshop" repo of mine for personal use. Things in here will not work, or they might. I put my experiments, failures, and wins in here. 
+
+Currently working state is I can provision AWS EC2 instances via Terraform and configure k3s on those via Ansible. Ansible installs k3s and joins the two worker nodes to the control plane. 
+
 ### Motivation
 
 I'm still trying to get my hands on a NUC or two, or some tiny-mini-micro PCs to build an actual, bare-metal homelab. In the meantime, I've been exploring other options. 
